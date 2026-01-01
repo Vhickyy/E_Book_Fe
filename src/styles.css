@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: #810ea7;
+  border-radius: 6px;
+}
+.form-input {
+  @apply outline-none border-2 rounded-xl w-full p-3 border-[#810EA780] 
+         text-sm placeholder:text-[#00000091] focus:border-[#810EA7] 
+         transition-colors;
+}
+
+.containerClass {
+  @apply w-[90%] max-w-[1400px] mx-auto;
+}

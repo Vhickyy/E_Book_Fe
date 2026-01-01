@@ -1,0 +1,123 @@
+<app-nav />
+<section class="relative h-fit">
+  <img
+    src="assets/hero_bg.png"
+    alt="hero_bg"
+    class="absolute inset-0 z-[-1] w-full h-full"
+  />
+
+  <div
+    class="backdrop-blur-xs bg-[#810EA799] py-20 md:py-[10rem] z-[1] h-full w-full flex flex-col gap-4 justify-center items-center"
+  >
+    <div class="flex items-center gap-2 text-white">
+      <div class="text-end font-normal text-sm md:text-4xl">
+        <p>GAIN</p>
+        <p>SHARE</p>
+      </div>
+      <h1 class="font-bold text-[42px] md:text-8xl">KNOWLEDGE</h1>
+    </div>
+
+    <p class="text-white w-[90%] md:text-lg md:w-[35%] mx-auto text-center">
+      A Large Collection Of Books, Journals, Articles And Resources To Suit Your
+      Reading Needs.
+    </p>
+
+    <div
+      class="bg-white p-1 flex items-center gap-2 rounded-lg w-[90%] md:w-[50%] md:max-w-[30rem] mt-6 md:mt-10"
+    >
+      <div class="h-full flex flex-1 items-center gap-2 pl-2">
+        <img src="assets/search.svg" alt="search" />
+        <input
+          type="text"
+          placeholder="Search for book"
+          class="h-full outline-none border-none text-sm text-[#810EA7] w-[80%]"
+        />
+      </div>
+
+      <div
+        class="bg-[#810EA7] flex w-fit gap-1 h-full justify-center items-center p-2 text-sm rounded-e-lg"
+      >
+        <app-button text="Search" />
+        <img src="assets/search-icon.svg" alt="search-icon" />
+      </div>
+    </div>
+  </div>
+</section>
+<div class="containerClass flex gap-4 text-center justify-around py-4">
+  @for (item of headerDetail; track $index) {
+  <div class="flex flex-col md:flex-row gap-2 md:gap-4 items-center">
+    <img [src]="item.img" alt="" class="w-12" />
+    <p class="text-xs md:text-sm font-semibold">{{ item.title }}</p>
+  </div>
+  }
+</div>
+
+<section class="relative py-8">
+  <h3
+    class="text-white text-center mb-12 font-bold font-[playball] text-3xl z-[1] relative"
+  >
+    Hot & Trending
+  </h3>
+
+  <div class="overflow-x-hidden relative z-[1] w-full max-w-[1600px] mx-auto">
+    <div class="flex gap-16 w-full">
+      <div class="flex gap-8 md:gap-16 justify-between animate">
+        @for (item of bookData; track $index) {
+        <app-book [book]="item" class="z-[1] w-[12rem] md:w-[19rem]" />
+        }
+      </div>
+      <div class="flex gap-8 md:gap-16 justify-between animate">
+        @for (item of bookData; track $index) {
+        <app-book [book]="item" class="z-[1] w-[12rem] md:w-[19rem]" />
+        }
+      </div>
+    </div>
+  </div>
+  <img src="assets/genhero.png" alt="" class="absolute top-0 bottom-0 h-full" />
+</section>
+
+<section class="bg-[#F8F9FA]">
+  <div
+    class="containerClass py-12 md:py-20 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6"
+  >
+    @for (book of bookData; track $index) {
+    <app-book [book]="book" />
+    }
+  </div>
+</section>
+<div
+  class="relative py-20 px-4 md:py-[8rem] overflow-hidden flex flex-col gap-6 md:gap-8 justify-center items-center"
+>
+  <div class="bg-[#000000C9] absolute inset-0 z-[-1]"></div>
+  <div class="bg-[#810EA770] backdrop-blur-2xl] absolute inset-0 z-[2]"></div>
+  <div
+    class="absolute w-[25%] h-[50%] top-[-2rem] left-[-5rem] bg-[#12085C] blur-3xl"
+  ></div>
+  <div
+    class="absolute w-[25%] h-[50%] bottom-0 left-[20%] bg-[#FEC59E] blur-3xl"
+  ></div>
+  <div
+    class="absolute w-[25%] h-[50%] top-0 right-[40%] bg-[#F6707C] blur-3xl"
+  ></div>
+  <div
+    class="absolute w-[25%] h-[50%] bottom-0 right-[20%] bg-[#FE4F77] blur-3xl"
+  ></div>
+  <div
+    class="absolute w-[25%] h-[50%] top-0 right-[-2rem] bg-[#00ACFF] blur-3xl"
+  ></div>
+  <p
+    class="text-white z-[3] font-[playball] text-3xl md:text-4xl text-center xl:text-6xl"
+  >
+    Dive Into The World of Warm Books.
+  </p>
+  <div class="bg-white z-[3] rounded-md">
+    <div
+      class="flex gap-2 bg-[#810EA7] m-[2px] p-2 rounded-md"
+      routerLink="/books"
+    >
+      <app-button text="Explore Book Library" />
+      <img src="assets/search-icon.svg" alt="search-icon" />
+    </div>
+  </div>
+</div>
+<app-footer />

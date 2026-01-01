@@ -1,13 +1,14 @@
 {
-  "name": "warm-book-fe",
+  "name": "warm-book",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:warm_book_fe": "node dist/warm_book_fe/server/server.mjs"
+    "test": "ng test --no-watch",
+    "serve:ssr:warm_book": "node dist/warm_book/server/server.mjs",
+    "test:ci": "ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage"
   },
   "prettier": {
     "overrides": [
@@ -21,6 +22,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^20.1.4",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
@@ -29,8 +31,14 @@
     "@angular/platform-server": "^20.0.0",
     "@angular/router": "^20.0.0",
     "@angular/ssr": "^20.0.5",
+    "@ngrx/signals": "^20.0.1",
+    "@tailwindcss/postcss": "^4.1.11",
     "express": "^5.1.0",
+    "ngx-image-cropper": "^9.1.5",
+    "ngx-toastr": "^19.1.0",
+    "postcss": "^8.5.6",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^4.1.11",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

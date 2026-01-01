@@ -1,0 +1,46 @@
+<app-auth-layout>
+  <form
+    class="bg-white py-8 px-6 md:px-12 rounded-xl w-[90%] mx-auto max-w-[35rem]"
+  >
+    <img src="assets/auth_logo.svg" alt="logo" class="w-fit mx-auto" />
+    <div class="text-center py-4">
+      <h5>Welcome Back</h5>
+      <p class="text-[#00000091]">Please sign in to your account</p>
+    </div>
+    <div class="grid gap-4">
+      <input
+        type="text"
+        placeholder="Email"
+        class="outline-none border-2 rounded-xl w-full p-3 border-[#810EA780] text-sm placeholder:text-[#00000091]"
+      />
+      <input
+        type="text"
+        placeholder="Password"
+        class="outline-none border-2 rounded-xl w-full p-3 border-[#810EA780] text-sm placeholder:text-[#00000091]"
+      />
+
+      <div class="font-bold text-xs text-[#810EA7] flex justify-between">
+        <p class="cursor-pointer" routerLink="/auth/forgot-password">
+          Forgot Password?
+        </p>
+        <p routerLink="/auth/register" class="cursor-pointer">
+          Don't Have An Account?
+        </p>
+      </div>
+
+      <div class="grid gap-4">
+        <app-button text="Sign In" class="bg-[#810EA7] p-3 rounded-xl" />
+        <div class="flex gap-6 items-center justify-center">
+          <div class="w-[30%] bg-[#810EA787] h-[2px]"></div>
+          <p class="text-sm">OR</p>
+          <div class="w-[30%] bg-[#810EA787] h-[2px]"></div>
+          <div></div>
+        </div>
+        <app-button
+          text="Sign In With Google"
+          styles="border border-[#810EA780] border-2 text-black p-3"
+        />
+      </div>
+    </div>
+  </form>
+</app-auth-layout>

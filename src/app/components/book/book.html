@@ -1,0 +1,23 @@
+<div
+  class="border-2 border-[#BB29EB26] cursor-pointer p-1 rounded-lg bg-[#FEFAFF] transition-all duration-200 book"
+  routerLink="/books/1"
+>
+  <div
+    class="flex justify-center items-center aspect-[5/3.5] overflow-hidden bg-gray-100"
+  >
+    <img
+      [src]="book().img"
+      [alt]="book().name"
+      class="w-full flex-1 object-contain"
+    />
+  </div>
+  <div class="py-4 px-2">
+    <h5 class="font-bold md:text-lg">
+      {{ book().name }}
+    </h5>
+    <p class="text-sm text-[#1E002894]">{{ book().author }}</p>
+    <div class="mt-4">
+      <p class="font-bold">N {{ book().price }}</p>
+    </div>
+  </div>
+</div>

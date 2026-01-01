@@ -1,0 +1,42 @@
+<app-gen-hero text="Books" />
+
+<section class="flex flex-col gap-6 md:gap-y-12 py-12 md:py-16 containerClass">
+  <div class="flex flex-col gap-4 md:flex-row justify-between">
+    <div class="flex gap-4">
+      <p>Home</p>
+      <p>></p>
+      <p>Books</p>
+      @if(filter){
+      <p>></p>
+      <p>{{ filter }}</p>
+      }
+    </div>
+    <div class="flex gap-4 w-[70%] md:w-[30%] items-center">
+      <p>Filter</p>
+      <app-select [filters]="filters" class="flex-1" [(filterBy)]="filter" />
+    </div>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+    @for (item of bookData; track $index) {
+    <app-book [book]="item" />
+    }
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+    @for (item of bookData; track $index) {
+    <app-book [book]="item" />
+    }
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+    @for (item of bookData; track $index) {
+    <app-book [book]="item" />
+    }
+  </div>
+</section>
+
+<!-- <section class="relative flex justify-between py-12">
+  @for (item of bookData; track $index) {
+  <app-book [book]="item" class="z-[1]" />
+  }
+  <img src="assets/genhero.png" alt="" class="absolute top-0 bottom-0 h-full" />
+</section> -->
+<app-footer />

@@ -1,0 +1,26 @@
+<h5 class="text-center font-semibold text-[#000000C4]">Interest</h5>
+<p class="text-center text-sm text-[#00000091] md:w-[70%] mx-auto">
+  Let’s know what topics interests you when it comes to reading and writing.
+  (you can do this later).
+</p>
+
+<div class="flex flex-wrap justify-center gap-4 mt-8 md:w-[80%] mx-auto">
+  @for (item of interest; track $index) {
+  <div
+    class="bg-[#AD62C6] font-semibold text-sm rounded-lg px-4 py-2 text-white cursor-pointer"
+  >
+    <p>{{ item }}</p>
+  </div>
+  }
+</div>
+
+<div class="flex justify-between mt-6">
+  <p (click)="regService.activeStep.set(0)" class="cursor-pointer">Back</p>
+  <button
+    class="text-white bg-[#810EA7] py-2 rounded-lg px-8 font-semibold cursor-pointer text-sm"
+    type="button"
+    (click)="regService.activeStep.set(2)"
+  >
+    Skip
+  </button>
+</div>
