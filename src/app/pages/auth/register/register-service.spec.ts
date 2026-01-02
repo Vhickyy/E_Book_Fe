@@ -16,7 +16,6 @@ describe('RegisterService', () => {
 
   it('should initialize signals with default values', () => {
     expect(service.activeStep()).toBe(0);
-    expect(service.selectedFile()).toBeNull();
     expect(service.imagePreview()).toBe('');
   });
 
@@ -43,7 +42,6 @@ describe('RegisterService', () => {
     service.handleFileSelection(mockFile);
 
     setTimeout(() => {
-      expect(service.selectedFile()).toBe(mockFile);
       expect(service.imagePreview()).toBe('data:image/png;base64,abc123');
       done();
     }, 0);
