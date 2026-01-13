@@ -1,16 +1,20 @@
-import { Component, signal } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { Button } from '../../UI/button/button';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MobileNav } from '../../components/mobile-nav/mobile-nav';
 
 @Component({
-  selector: 'app-nav',
-  imports: [Button, RouterLink, RouterLinkActive, MobileNav],
-  templateUrl: './nav.html',
-  styleUrl: './nav.css',
+  selector: 'app-mobile-nav',
+  imports: [Button, RouterLink, RouterLinkActive],
+  templateUrl: './mobile-nav.html',
+  styleUrl: './mobile-nav.css',
 })
-export class Nav {
-  mobile = signal(false);
+export class MobileNav {
+  mobile = model<boolean>(false);
+
+  closeNav() {
+    this.mobile.set(false);
+  }
+
   navItems = [
     {
       name: 'Home',

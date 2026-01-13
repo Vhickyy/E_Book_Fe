@@ -1,0 +1,33 @@
+<div
+  class="fixed bg-white w-[15rem] top-0 bottom-0 py-6 px-10 h-full z-[1000] right-0"
+>
+  <img
+    src="assets/logo.svg"
+    alt="logo"
+    class="cursor-pointer pb-6"
+    (click)="closeNav()"
+  />
+  <div class="flex-col flex gap-4">
+    @for (item of navItems; track $index) {
+    <a [routerLink]="item.path" class="font-semibold text-[#810EA7]">
+      {{ item.name }}
+      <span
+        routerLinkActive="rounded-full h-1 w-4 bg-[#810EA7] -mt-1 block"
+        [routerLinkActiveOptions]="{ exact: true }"
+      ></span>
+    </a>
+    }
+    <p>Cart</p>
+    <app-button
+      text="Log In"
+      class="text-white bg-[#810EA7] px-6 py-2 rounded-lg text-sm cursor-pointer"
+      routerLink="/auth/login"
+    />
+    <app-button
+      text="Sign Up"
+      class="border-2 border-[#810EA7] px-6 py-2 rounded-lg text-sm cursor-pointer"
+      routerLink="/auth/login"
+      styles="text-[#810EA7]"
+    />
+  </div>
+</div>

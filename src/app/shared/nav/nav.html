@@ -1,5 +1,5 @@
 <nav class="bg-white sticky top-0 z-[100] shadow-lg">
-  <div class="py-4 containerClass flex justify-between items-center">
+  <div class="py-6 containerClass flex justify-between items-center">
     <img
       src="assets/logo.svg"
       routerLink="/"
@@ -19,23 +19,33 @@
       }
     </div>
 
-    <div class="flex gap-2 md:gap-4 items-center">
+    <div class="flex gap-3 md:gap-4 items-center">
       <div
-        class="flex flex-col justify-center cursor-pointer"
+        class="flex flex-col justify-center cursor-pointer relative"
         routerLink="/cart"
       >
         <div
-          class="bg-[#810EA7] text-white w-5 h-5 text-[9px] flex justify-center items-center rounded-full ml-2 -mb-1"
+          class="bg-[#810EA7] text-white w-5 h-5 text-[9px] flex justify-center items-center rounded-full ml-2 -mb-1 absolute -top-4"
         >
           <p>99</p>
         </div>
         <img src="assets/cart.svg" alt="cart" class="h-7 w-7" />
       </div>
+      <img
+        src="assets/menu.svg"
+        alt="cart"
+        class="h-7 w-7"
+        (click)="mobile.set(true)"
+      />
       <app-button
         text="Sign Up"
-        class="text-white bg-[#810EA7] px-6 py-2 rounded-lg text-sm cursor-pointer"
+        class="text-white bg-[#810EA7] px-6 py-2 rounded-lg text-sm cursor-pointer hidden md:block"
         routerLink="/auth/login"
       />
     </div>
   </div>
+
+  @if(mobile()){
+  <app-mobile-nav class="md:hidden" [(mobile)]="mobile" />
+  }
 </nav>
