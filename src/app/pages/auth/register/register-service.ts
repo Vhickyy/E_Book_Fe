@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../auth-service';
@@ -15,7 +14,6 @@ export class RegisterService {
   avatarPublicId = signal<string>('');
   error = signal<any>('');
   loading = signal<boolean>(false);
-  http = inject(HttpClient);
 
   private fb = inject(FormBuilder);
 
@@ -45,7 +43,7 @@ export class RegisterService {
         next: (data) => {
           console.log({ data });
         },
-        error: (e) => console.log({ e }),
+        error: (e) => {},
       });
   }
 

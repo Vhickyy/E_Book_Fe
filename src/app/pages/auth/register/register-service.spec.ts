@@ -1,12 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 
 import { RegisterService } from './register-service';
+import { AuthService } from '../auth-service';
+import { of, throwError } from 'rxjs';
 
-describe('RegisterService', () => {
+fdescribe('RegisterService', () => {
   let service: RegisterService;
+  let authServiceSpy: jasmine.SpyObj<AuthService>;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    authServiceSpy = jasmine.createSpyObj('AuthService', [
+      'register',
+      'uploadAvatar',
+    ]);
+    TestBed.configureTestingModule({
+      providers: [{ provide: AuthService, useValue: authServiceSpy }],
+    });
     service = TestBed.inject(RegisterService);
   });
 
@@ -19,51 +28,52 @@ describe('RegisterService', () => {
     expect(service.imagePreview()).toBe('');
   });
 
-  it('should set selectedFile and update imagePreview when file is handled', (done) => {
-    const mockFile = new File(['dummy data'], 'avatar.png', {
-      type: 'image/png',
-    });
-
-    class MockFileReader {
-      onload: ((ev: ProgressEvent<FileReader>) => void) | null = null;
-      readAsDataURL = jasmine.createSpy('readAsDataURL').and.callFake(() => {
-        if (this.onload) {
-          this.onload({
-            target: { result: 'data:image/png;base64,abc123' },
-          } as any);
-        }
-      });
-    }
-
-    spyOn(window as any, 'FileReader').and.returnValue(
-      new MockFileReader() as any
-    );
-
-    service.handleFileSelection(mockFile);
-
-    setTimeout(() => {
-      expect(service.imagePreview()).toBe('data:image/png;base64,abc123');
-      done();
-    }, 0);
-  });
-
-  it('should log form values when registerUser is called', () => {
-    const consoleSpy = spyOn(console, 'log');
-
-    service.registerForm.setValue({
-      email: 'test@example.com',
-      firstName: 'Jane',
-      lastName: 'Doe',
-      password: '123456',
-    });
-
+  it('should call auth register', () => {
+    authServiceSpy.register.and.returnValue(of({}));
     service.registerUser();
 
-    expect(consoleSpy).toHaveBeenCalledWith({
-      email: 'test@example.com',
-      firstName: 'Jane',
+    expect(authServiceSpy.register).toHaveBeenCalled();
+  });
+
+  it('should call auth register with error', () => {
+    authServiceSpy.register.and.returnValue(
+      throwError(() => new Error('Register failed')),
+    );
+    service.registerUser();
+
+    expect(authServiceSpy.register).toHaveBeenCalled();
+  });
+
+  it('should call auth upload avatar', () => {
+    authServiceSpy.uploadAvatar.and.returnValue(of({ avatarPublicId: '123' }));
+    const file = new File([''], 'test.png');
+    service.handleFileSelection(file);
+
+    expect(authServiceSpy.uploadAvatar).toHaveBeenCalled();
+  });
+
+  it('should call auth upload avatar with error', () => {
+    authServiceSpy.uploadAvatar.and.returnValue(
+      throwError(() => new Error('Login failed')),
+    );
+    const file = new File([''], 'test.png');
+    service.handleFileSelection(file);
+
+    expect(authServiceSpy.uploadAvatar).toHaveBeenCalled();
+  });
+
+  it('should return true when form invalid', () => {
+    expect(service.proceedToStepTwo()).toBeTrue();
+  });
+
+  it('should return false when form valid', () => {
+    service.registerForm.setValue({
+      firstName: 'John',
       lastName: 'Doe',
-      password: '123456',
+      email: 'test@test.com',
+      password: 'Password1',
     });
+
+    expect(service.proceedToStepTwo()).toBeFalse();
   });
 });

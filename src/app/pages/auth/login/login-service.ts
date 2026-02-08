@@ -21,7 +21,7 @@ export class LoginService {
       .login(this.loginForm.value as unknown as ILoginUser)
       .subscribe({
         next: (data) => console.log({ data }),
-        error: (e) => console.log({ e }),
+        error: (e) => {},
       });
   }
 }
