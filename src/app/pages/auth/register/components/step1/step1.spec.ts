@@ -2,17 +2,38 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { Step1 } from './step1';
 import { ElementRef } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { RegisterService } from '../../register-service';
 
 describe('Step1', () => {
   let component: Step1;
   let fixture: ComponentFixture<Step1>;
+  let registerService: jasmine.SpyObj<RegisterService>;
 
   beforeEach(async () => {
-    const fb = new FormBuilder();
+    let fb = new FormBuilder();
+
+    registerService = jasmine.createSpyObj(
+      'RegisterService',
+      ['handleFileSelection', 'imagePreview'],
+      {
+        registerForm: fb.group({
+          firstName: [''],
+          lastName: [''],
+          email: [''],
+          password: [''],
+        }),
+        handleFileSelection: jasmine.createSpy('handleFileSelection'),
+        loading: jasmine.createSpy('loading').and.returnValue(false),
+      },
+    );
+
     await TestBed.configureTestingModule({
-      imports: [Step1],
-      providers: [provideRouter([])],
+      imports: [Step1, ReactiveFormsModule],
+      providers: [
+        provideRouter([]),
+        { provide: RegisterService, useValue: registerService },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Step1);
@@ -24,22 +45,29 @@ describe('Step1', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should trigger file input click on selectFile()', () => {
-    const fakeInput = {
-      nativeElement: { click: jasmine.createSpy('click') },
-    } as unknown as ElementRef<HTMLInputElement>;
-    (component as any).fileEl = jasmine.createSpy().and.returnValue(fakeInput);
+  it('should trigger click on file input when selectFile is called', () => {
+    const clickSpy = jasmine.createSpy('click');
+
+    spyOn(component, 'fileEl').and.returnValue({
+      nativeElement: { click: clickSpy },
+    } as any);
+
     component.selectFile();
 
-    expect(fakeInput.nativeElement.click).toHaveBeenCalled();
+    expect(clickSpy).toHaveBeenCalled();
   });
 
-  it('should call handleFileSelection when a file is selected', () => {
-    const file = new File(['hello'], 'hello.txt', { type: 'text/plain' });
+  it('should call registerService.handleFileSelection on file change', () => {
+    const file = new File(['test'], 'test.png', { type: 'image/png' });
+
     const event = {
-      target: { files: [file] },
+      target: {
+        files: [file],
+      },
     } as unknown as Event;
 
     component.onFileChange(event);
+
+    expect(registerService.handleFileSelection).toHaveBeenCalledWith(file);
   });
 });

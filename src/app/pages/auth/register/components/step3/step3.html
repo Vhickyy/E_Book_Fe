@@ -6,7 +6,7 @@
 
 <div>
   <div
-    class="w-20 h-20 md:w-[6rem] md:h-[6rem] border-2 border-[#810EA780] rounded-lg mx-auto"
+    class="w-20 h-20 md:w-[6rem] md:h-[6rem] border-2 border-primary rounded-lg mx-auto"
   >
     <img
       [src]="regService.imagePreview()"
@@ -19,7 +19,7 @@
 <div class="flex justify-between mt-6">
   <p class="cursor-pointer" (click)="regService.activeStep.set(0)">Edit</p>
   <button
-    class="text-white bg-[#810EA7] py-2 rounded-lg px-8 font-semibold cursor-pointer text-sm"
+    class="text-white bg-primary py-2 rounded-lg px-8 font-semibold cursor-pointer text-sm"
   >
     Create Account
   </button>

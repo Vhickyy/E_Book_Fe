@@ -9,25 +9,26 @@
   />
   <div class="flex-col flex gap-4">
     @for (item of navItems; track $index) {
-    <a [routerLink]="item.path" class="font-semibold text-[#810EA7]">
-      {{ item.name }}
-      <span
-        routerLinkActive="rounded-full h-1 w-4 bg-[#810EA7] -mt-1 block"
-        [routerLinkActiveOptions]="{ exact: true }"
-      ></span>
-    </a>
+      <a [routerLink]="item.path" class="font-semibold text-primary">
+        {{ item.name }}
+        <span
+          routerLinkActive="rounded-full h-1 w-4 bg-primary -mt-1 block"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="closeNav()"
+        ></span>
+      </a>
     }
     <p>Cart</p>
     <app-button
       text="Log In"
-      class="text-white bg-[#810EA7] px-6 py-2 rounded-lg text-sm cursor-pointer"
+      class="text-white bg-primary px-6 py-2 rounded-lg text-sm cursor-pointer"
       routerLink="/auth/login"
     />
     <app-button
       text="Sign Up"
-      class="border-2 border-[#810EA7] px-6 py-2 rounded-lg text-sm cursor-pointer"
+      class="border-2 border-primary px-6 py-2 rounded-lg text-sm cursor-pointer"
       routerLink="/auth/login"
-      styles="text-[#810EA7]"
+      styles="text-primary"
     />
   </div>
 </div>

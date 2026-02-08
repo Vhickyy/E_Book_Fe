@@ -8,7 +8,7 @@
 >
   <div class="mx-auto w-[20%]">
     <div
-      class="w-20 h-20 md:w-[6rem] md:h-[6rem] border-2 border-[#810EA780] rounded-lg mx-auto"
+      class="w-20 h-20 md:w-[6rem] md:h-[6rem] border-2 border-primary/80 rounded-lg mx-auto"
       (click)="selectFile()"
     >
       <img
@@ -36,9 +36,11 @@
           class="form-input h-fit"
           formControlName="firstName"
         />
-        @if(regService.registerForm.get('firstName')?.invalid &&
-        regService.registerForm.get('firstName')?.touched){
-        <p class="text-xs text-red-500">First Name is required</p>
+        @if (
+          regService.registerForm.get("firstName")?.invalid &&
+          regService.registerForm.get("firstName")?.touched
+        ) {
+          <p class="text-xs text-red-500">First Name is required</p>
         }
       </div>
       <div class="grid gap-1 w-full">
@@ -48,9 +50,11 @@
           class="form-input h-fit"
           formControlName="lastName"
         />
-        @if(regService.registerForm.get('lastName')?.invalid &&
-        regService.registerForm.get('lastName')?.touched){
-        <p class="text-xs text-red-500">Last Name is required</p>
+        @if (
+          regService.registerForm.get("lastName")?.invalid &&
+          regService.registerForm.get("lastName")?.touched
+        ) {
+          <p class="text-xs text-red-500">Last Name is required</p>
         }
       </div>
     </div>
@@ -72,14 +76,14 @@
 </div>
 <p class="text-xs md:text-sm text-[#00000091] md:text-end pt-4">
   Already have an account?
-  <span class="text-[#810EA780] cursor-pointer" routerLink="/auth/login"
+  <span class="text-primary/80 cursor-pointer" routerLink="/auth/login"
     >Sign In.</span
   >
 </p>
 
 <div class="flex justify-end mt-6">
   <button
-    class="text-white bg-[#810EA7] py-2 rounded-lg px-8 font-semibold cursor-pointer text-sm disabled:opacity-50"
+    class="text-white bg-primary py-2 rounded-lg px-8 font-semibold cursor-pointer text-sm disabled:opacity-50"
     type="button"
     (click)="regService.registerUser()"
   >

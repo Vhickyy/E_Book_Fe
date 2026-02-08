@@ -23,34 +23,4 @@ export class Step1 {
     const file = input.files?.[0];
     if (file) this.regService.handleFileSelection(file);
   }
-
-  // selectedFile: File | null = null;
-  // imagePreview = signal<string>('');
-  // step = model<number>(0);
-  // registerForm = input.required<FormGroup>();
-
-  // avatarUploadResource = httpResource(() => 'http://localhost:3000/hii');
-
-  // selectFile() {
-  //   this.fileEl()?.nativeElement.click();
-  // }
-
-  // uploadFile(event: Event) {
-  //   const input = event.target as HTMLInputElement;
-  //   const file = input.files?.[0];
-
-  //   if (file) {
-  //     this.selectedFile = file;
-
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       this.imagePreview.set(e.target?.result as string);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
-
-  // changeStep() {
-  //   this.step.set(1);
-  // }
 }

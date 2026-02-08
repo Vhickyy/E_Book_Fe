@@ -1,7 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --color-primary: #810ea7;
+}
+
 body {
   font-family: "Poppins", sans-serif;
+  background-color: #810ea710;
 }
 
 ::-webkit-scrollbar {
