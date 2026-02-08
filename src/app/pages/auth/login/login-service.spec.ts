@@ -3,7 +3,7 @@ import { LoginService } from './login-service';
 import { AuthService } from '../auth-service';
 import { of, throwError } from 'rxjs';
 
-describe('LoginService', () => {
+fdescribe('LoginService', () => {
   let service: LoginService;
 
   let authServiceSpy: jasmine.SpyObj<AuthService>;

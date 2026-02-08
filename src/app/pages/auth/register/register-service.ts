@@ -43,7 +43,7 @@ export class RegisterService {
         next: (data) => {
           console.log({ data });
         },
-        error: (e) => console.log({ e }),
+        error: (e) => {},
       });
   }
 

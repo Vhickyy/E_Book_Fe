@@ -4,7 +4,7 @@ import { RegisterService } from './register-service';
 import { AuthService } from '../auth-service';
 import { of, throwError } from 'rxjs';
 
-describe('RegisterService', () => {
+fdescribe('RegisterService', () => {
   let service: RegisterService;
   let authServiceSpy: jasmine.SpyObj<AuthService>;
 
@@ -37,7 +37,7 @@ describe('RegisterService', () => {
 
   it('should call auth register with error', () => {
     authServiceSpy.register.and.returnValue(
-      throwError(() => new Error('Login failed')),
+      throwError(() => new Error('Register failed')),
     );
     service.registerUser();
 

@@ -43,19 +43,38 @@ describe('AuthService', () => {
   });
 
   it('should call login API', () => {
+    const mockResponse = { token: '123' };
     const data: ILoginUser = {
       email: 'test@example.com',
       password: '123456',
     };
-
-    service.login(data).subscribe();
+    service.login(data).subscribe((res) => {
+      expect(res).toEqual(mockResponse);
+    });
 
     const req = httpMock.expectOne(`${baseUrl.apiUrl}/auth/login`);
 
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(data);
 
-    req.flush({ success: true });
+    req.flush(mockResponse);
+  });
+
+  it('should handle login error', () => {
+    const loginPayload = { email: 'test@test.com', password: '123456' };
+
+    service.login(loginPayload).subscribe({
+      next: () => fail('should have failed'),
+      error: (err) => {
+        expect(err).toBeTruthy();
+      },
+    });
+
+    const req = httpMock.expectOne((request) =>
+      request.url.endsWith('/auth/login'),
+    );
+
+    req.flush('Login failed', { status: 400, statusText: 'Bad Request' });
   });
 
   it('should call upload avatar API', () => {

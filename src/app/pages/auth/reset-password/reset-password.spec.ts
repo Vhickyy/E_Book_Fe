@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ResetPassword } from './reset-password';
+import { provideRouter } from '@angular/router';
 
 describe('ResetPassword', () => {
   let component: ResetPassword;
@@ -8,9 +9,9 @@ describe('ResetPassword', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ResetPassword]
-    })
-    .compileComponents();
+      imports: [ResetPassword],
+      providers: [provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ResetPassword);
     component = fixture.componentInstance;
