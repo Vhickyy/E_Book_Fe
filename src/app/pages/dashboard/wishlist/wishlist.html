@@ -1,0 +1,11 @@
+<app-wish-table
+  [columns]="wishCol"
+  [data]="dataSource"
+  [templates]="columnTemplates"
+/>
+<ng-template #imageTemplate let-product>
+  <img [src]="product.image" width="70" class="mx-auto my-4" />
+</ng-template>
+<ng-template #selectTemplate let-product>
+  <div class="border-primary h-6 w-6 border rounded-lg mx-auto"></div>
+</ng-template>

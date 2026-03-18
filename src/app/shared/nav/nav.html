@@ -1,11 +1,17 @@
-<nav class="bg-white sticky top-0 z-[100] shadow-lg">
+<nav
+  [ngClass]="{
+    'bg-white shadow-md fixed top-0': scrolled,
+  }"
+  class="top-0 z-[100] bg-transparent w-full transition-all duration-300"
+>
   <div class="py-6 containerClass flex justify-between items-center">
-    <img
+    <!-- <img
       src="assets/logo.svg"
       routerLink="/"
       alt="logo"
       class="cursor-pointer"
-    />
+    /> -->
+    <app-svgs [svg]="logosvg" svgclass="w-7 h-7 text-primary" />
 
     <div class="hidden md:flex gap-6">
       @for (item of navItems; track $index) {
@@ -29,14 +35,11 @@
         >
           <p>99</p>
         </div>
-        <img src="assets/cart.svg" alt="cart" class="h-7 w-7" />
+        <app-svgs [svg]="cartsvg" svgclass="w-7 h-7 text-primary" />
       </div>
-      <img
-        src="assets/menu.svg"
-        alt="cart"
-        class="h-7 w-7 md:hidden"
-        (click)="mobile.set(true)"
-      />
+      <div (click)="mobile.set(true)" class="w-fit md:hidden">
+        <app-svgs [svg]="menusvg" svgclass="w-7 h-7 text-primary" />
+      </div>
       <app-button
         text="Sign Up"
         class="text-white bg-primary px-6 py-2 rounded-lg text-sm cursor-pointer hidden md:block"

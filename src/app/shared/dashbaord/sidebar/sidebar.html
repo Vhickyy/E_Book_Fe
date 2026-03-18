@@ -1,0 +1,70 @@
+<div
+  class="flex flex-col border-r border-[#EAECF0] h-screen top-0 bottom-0 gap-10 py-8 px-6 bg-primary/30"
+>
+  <app-svgs [svg]="logosvg" svgclass="w-7 h-7 text-primary" />
+  <div class="flex-1 gap-4 flex flex-col overflow-y-auto">
+    @for (item of sidebarData; track $index) {
+      @if (item?.subLinks) {
+        <div class="flex flex-col" (click)="updateActiveDropDown(item.name)">
+          <div
+            class="text-primary text-sm font-semibold cursor-pointer flex items-center justify-between py-3 px-4 rounded-xl"
+            [ngClass]="{
+              'bg-primary text-white': isParentActive(item),
+              'hover:bg-primary/20': !isParentActive(item),
+            }"
+          >
+            <div class="flex items-center gap-2">
+              <app-svgs [svg]="menusvg" svgclass="w-5 h-5" />
+              <p>{{ item.name }}</p>
+            </div>
+
+            <span>⌄</span>
+          </div>
+
+          @if (activeDropDown() == item.name) {
+            <div
+              class="flex flex-col mt-4 gap-3"
+              (click)="$event.stopPropagation()"
+            >
+              @for (sub of item.subLinks; track $index) {
+                <div
+                  #rla="routerLinkActive"
+                  class="text-primary text-sm cursor-pointer flex items-center gap-2 py-3 pl-10 rounded-xl font-semibold"
+                  [routerLink]="sub.link"
+                  routerLinkActive=""
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  [ngClass]="{
+                    'bg-white ': rla.isActive,
+                    'hover:bg-primary/20': !rla.isActive,
+                  }"
+                >
+                  <app-svgs [svg]="menusvg" svgclass="w-5 h-5" />
+                  <p>{{ sub.name }}</p>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      } @else {
+        <div
+          #rla="routerLinkActive"
+          class="text-primary text-sm font-semibold cursor-pointer flex items-center gap-2 py-3 px-4 rounded-xl"
+          (click)="updateActiveDropDown('')"
+          [routerLink]="item.path"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-primary text-white"
+          [ngClass]="{
+            'bg-primary text-white': rla.isActive,
+            'hover:bg-primary/20': !rla.isActive,
+          }"
+        >
+          <app-svgs [svg]="menusvg" svgclass="w-5 h-5" />
+          <p>
+            {{ item.name }}
+          </p>
+        </div>
+      }
+    }
+  </div>
+  <p>footer</p>
+</div>
