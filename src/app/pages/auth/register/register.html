@@ -1,10 +1,10 @@
 <app-auth-layout>
   <img src="assets/reg_logo.svg" alt="logo" class="w-20 md:w-fit mx-auto" />
-  <p class="font-semibold text-white">Create new account</p>
+  <p class="font-semibold text-primary">Create new account</p>
   <form
     [formGroup]="regService.registerForm"
     (ngSubmit)="registerUser($event)"
-    class="bg-white rounded-xl w-[90%] mx-auto max-w-[50rem] overflow-hidden"
+    class="bg-white shadow-xl rounded-xl w-[90%] mx-auto max-w-[50rem] overflow-hidden"
   >
     <!-- {{ regService.error() | json }}
     {{ regService.data() | json }} -->
