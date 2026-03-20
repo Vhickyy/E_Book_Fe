@@ -1,0 +1,51 @@
+<div class="flex items-center gap-2 mt-4 mx-auto w-fit">
+  <!-- Prev -->
+  <button
+    (click)="prev()"
+    [disabled]="pageIndex() === 1"
+    class="px-3 py-1 bg-primary rounded disabled:opacity-50 disabled:cursor-not-allowed text-white"
+  >
+    Prev
+  </button>
+
+  <!-- First Page -->
+  @if (pages()[0] > 1) {
+    <button (click)="goToPage(1)" class="px-3 py-1 border rounded">1</button>
+
+    @if (pages()[0] > 2) {
+      <span>...</span>
+    }
+  }
+
+  <!-- Middle Pages -->
+  @for (page of pages(); track page) {
+    <button
+      (click)="goToPage(page)"
+      class="px-3 py-1 border rounded"
+      [class.bg-primary]="pageIndex() === page"
+      [class.text-white]="pageIndex() === page"
+    >
+      {{ page }}
+    </button>
+  }
+
+  <!-- Last Page -->
+  @if (pages()[pages().length - 1] < totalPages()) {
+    @if (pages()[pages().length - 1] < totalPages() - 1) {
+      <span>...</span>
+    }
+
+    <button (click)="goToPage(totalPages())" class="px-3 py-1 border rounded">
+      {{ totalPages() }}
+    </button>
+  }
+
+  <!-- Next -->
+  <button
+    (click)="next()"
+    [disabled]="pageIndex() === totalPages()"
+    class="px-3 py-1 bg-primary rounded disabled:opacity-50 disabled:cursor-not-allowed text-white"
+  >
+    Next
+  </button>
+</div>

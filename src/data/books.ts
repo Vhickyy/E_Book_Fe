@@ -2,6 +2,48 @@ import { IBook } from '../types';
 
 export const books: IBook[] = [
   {
+    name: 'The Revival1',
+    price: '23400',
+    rating: 0,
+    author: 'Vee',
+    img: '/assets/genhero.png',
+  },
+  {
+    name: 'The Revival2',
+    price: '23400',
+    rating: 0,
+    author: 'Vee',
+    img: '/assets/genhero.png',
+  },
+  {
+    name: 'The Revival3',
+    price: '23400',
+    rating: 0,
+    author: 'Vee',
+    img: '/assets/genhero.png',
+  },
+  {
+    name: 'The Revival',
+    price: '23400',
+    rating: 0,
+    author: 'Vee',
+    img: '/assets/genhero.png',
+  },
+  {
+    name: 'The Revival4',
+    price: '23400',
+    rating: 0,
+    author: 'Vee',
+    img: '/assets/book.png',
+  },
+  {
+    name: 'The Revival5',
+    price: '23400',
+    rating: 0,
+    author: 'Vee',
+    img: '/assets/genhero.png',
+  },
+  {
     name: 'The Revival',
     price: '23400',
     rating: 0,
@@ -13,7 +55,7 @@ export const books: IBook[] = [
     price: '23400',
     rating: 0,
     author: 'Vee',
-    img: '/assets/book.png',
+    img: '/assets/genhero.png',
   },
   {
     name: 'The Revival',
