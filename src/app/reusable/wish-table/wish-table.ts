@@ -11,7 +11,6 @@ import {
   TemplateRef,
 } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -19,13 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 @Component({
   selector: 'app-wish-table',
   standalone: true,
-  imports: [
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    CommonModule,
-    MatCheckboxModule,
-  ],
+  imports: [MatTableModule, MatSortModule, CommonModule, MatCheckboxModule],
 
   templateUrl: './wish-table.html',
   styleUrl: './wish-table.css',
@@ -57,13 +50,9 @@ export class WishTable implements OnInit {
   //   throw new Error('Method not implemented.');
   // }
 
-  // private _effect = effect(() => {
-  //   if (this.dataSource) {
-  //     this.dataSource.paginator = this.paginator();
-  //     this.dataSource.sort = this.sort();
-  //     this.dataSource.filter = this.searchText().trim().toLowerCase();
-  //   }
-  // });
+  private _effect = effect(() => {
+    this.dataSource = new MatTableDataSource(this.data());
+  });
 
   // ngAfterViewInit() {
   //   this.dataSource.paginator = this.paginator();

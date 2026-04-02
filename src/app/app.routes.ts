@@ -11,6 +11,7 @@ import { About } from './pages/about/about';
 import { Dashboard } from './pages/dashboard/dashboard/dashboard';
 import { DashboardLayout } from './shared/dashbaord/dashboard-layout/dashboard-layout';
 import { Wishlist } from './pages/dashboard/wishlist/wishlist';
+import { Reading } from './pages/dashboard/library/reading/reading';
 
 export const routes: Routes = [
   {
@@ -73,6 +74,10 @@ export const routes: Routes = [
           {
             path: '',
             component: LibBook,
+          },
+          {
+            path: 'reading',
+            component: Reading,
           },
         ],
       },

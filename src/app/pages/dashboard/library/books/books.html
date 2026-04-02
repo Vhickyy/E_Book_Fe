@@ -1,6 +1,6 @@
 <section class="h-full flex-1">
   <div class="flex-1 flex gap-6 h-full">
-    @if (!books.length) {
+    @if (!data().length) {
       <div
         class="flex-1 bg-white rounded-xl flex flex-col gap-4 justify-center items-center h-full shadow-md"
       >
@@ -17,14 +17,19 @@
         />
       </div>
     } @else {
-      <div class="grid grid-cols-3 h-fit flex-1 gap-4">
-        @for (item of books; track $index) {
-          <!-- <div
-            class="bg-white rounded-xl flex flex-col gap-4 justify-center items-center h-fit shadow-md"
-          > -->
-          <app-book [book]="item" />
-          <!-- </div> -->
-        }
+      <div class="flex-1 flex flex-col justify-between gap-4">
+        <div class="grid grid-cols-3 h flex-1 gap-4">
+          @for (item of data(); track $index) {
+            <app-book [book]="item" />
+          }
+        </div>
+        <app-pagination
+          [(data)]="data"
+          [(pageIndex)]="pageIndex"
+          [(pageSize)]="pageSize"
+          [(totalItems)]="totalItems"
+          [list]="books"
+        />
       </div>
     }
 

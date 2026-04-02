@@ -6,7 +6,11 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Server,
   },
   {
+    path: '',
+    renderMode: RenderMode.Client, // 👈 skips SSR for this route
+  },
+  {
     path: '**',
-    renderMode: RenderMode.Prerender,
+    renderMode: RenderMode.Server,
   },
 ];
