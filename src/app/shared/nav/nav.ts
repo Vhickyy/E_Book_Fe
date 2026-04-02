@@ -47,7 +47,7 @@ export class Nav {
     },
     {
       name: 'Journals',
-      path: '/journal',
+      path: '/dashboard',
     },
   ];
 }
