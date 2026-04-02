@@ -1,83 +1,84 @@
 import { Routes } from '@angular/router';
-import { Home } from './pages/home/home';
-import { Login } from './pages/auth/login/login';
-import { Register } from './pages/auth/register/register';
-import { Books } from './pages/books/books';
-import { Books as LibBook } from './pages/dashboard/library/books/books';
-import { ForgotPassword } from './pages/auth/forgot-password/forgot-password';
-import { Cart } from './pages/cart/cart';
-import { BookId } from './pages/book-id/book-id';
-import { About } from './pages/about/about';
-import { Dashboard } from './pages/dashboard/dashboard/dashboard';
-import { DashboardLayout } from './shared/dashbaord/dashboard-layout/dashboard-layout';
-import { Wishlist } from './pages/dashboard/wishlist/wishlist';
-import { Reading } from './pages/dashboard/library/reading/reading';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Home,
+    loadComponent: () => import('./pages/home/home').then((m) => m.Home),
   },
   {
     path: 'about',
-    component: About,
+    loadComponent: () => import('./pages/about/about').then((m) => m.About),
   },
   {
     path: 'auth',
     children: [
       {
         path: 'login',
-        component: Login,
+        loadComponent: () =>
+          import('./pages/auth/login/login').then((m) => m.Login),
       },
       {
         path: 'register',
-        component: Register,
+        loadComponent: () =>
+          import('./pages/auth/register/register').then((m) => m.Register),
       },
       {
         path: 'forgot-password',
-        component: ForgotPassword,
+        loadComponent: () =>
+          import('./pages/auth/forgot-password/forgot-password').then(
+            (m) => m.ForgotPassword,
+          ),
       },
     ],
   },
   {
     path: 'books',
-    component: Books,
+    loadComponent: () => import('./pages/books/books').then((m) => m.Books),
   },
   {
     path: 'books/:id',
-    component: BookId,
-  },
-
-  {
-    path: 'journal',
-    component: Cart,
+    loadComponent: () =>
+      import('./pages/book-id/book-id').then((m) => m.BookId),
   },
   {
     path: 'cart',
-    component: Cart,
+    loadComponent: () => import('./pages/cart/cart').then((m) => m.Cart),
   },
   {
     path: 'dashboard',
-    component: DashboardLayout,
+    loadComponent: () =>
+      import('./shared/dashbaord/dashboard-layout/dashboard-layout').then(
+        (m) => m.DashboardLayout,
+      ),
     children: [
       {
         path: '',
-        component: Dashboard,
+        loadComponent: () =>
+          import('./pages/dashboard/dashboard/dashboard').then(
+            (m) => m.Dashboard,
+          ),
       },
       {
         path: 'wishlist',
-        component: Wishlist,
+        loadComponent: () =>
+          import('./pages/dashboard/wishlist/wishlist').then((m) => m.Wishlist),
       },
       {
         path: 'library',
         children: [
           {
             path: '',
-            component: LibBook,
+            loadComponent: () =>
+              import('./pages/dashboard/library/books/books').then(
+                (m) => m.Books,
+              ),
           },
           {
             path: 'reading',
-            component: Reading,
+            loadComponent: () =>
+              import('./pages/dashboard/library/reading/reading').then(
+                (m) => m.Reading,
+              ),
           },
         ],
       },
