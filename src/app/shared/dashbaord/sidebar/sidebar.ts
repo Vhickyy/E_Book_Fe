@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
-import { Svgs } from '../../../assets/svgs/svgs';
 import { LOGO_SVG, MENU_SVGS } from '../../../../assets/svgs';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Svgs } from '../../../components/svgs/svgs';
 
 @Component({
   selector: 'app-sidebar',
@@ -29,7 +29,7 @@ export class Sidebar {
         },
         {
           name: 'Currently Reading',
-          link: '/dashboard/reading',
+          link: '/dashboard/library/reading',
         },
         {
           name: 'Completed',

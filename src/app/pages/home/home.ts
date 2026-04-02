@@ -5,8 +5,8 @@ import { Book } from '../../components/book/book';
 import { books } from '../../../data/books';
 import { RouterLink } from '@angular/router';
 import { Footer } from '../../shared/footer/footer';
-import { Svgs } from '../../assets/svgs/svgs';
 import { CURVED_ARROW_SVG } from '../../../assets/svgs';
+import { Svgs } from '../../components/svgs/svgs';
 
 @Component({
   selector: 'app-home',

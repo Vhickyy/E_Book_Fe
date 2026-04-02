@@ -4,7 +4,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MobileNav } from '../../components/mobile-nav/mobile-nav';
 import { CommonModule } from '@angular/common';
 import { CART_SVG, LOGO_SVG, MENU_SVGS } from '../../../assets/svgs';
-import { Svgs } from '../../assets/svgs/svgs';
+import { Svgs } from '../../components/svgs/svgs';
 
 @Component({
   selector: 'app-nav',

@@ -1,0 +1,57 @@
+<section class="w-full h-[77vh] flex justify-between gap-6">
+  <ngx-extended-pdf-viewer
+    [showToolbar]="true"
+    [showSidebarButton]="false"
+    useBrowserLocale="true"
+    src="assets/cv.pdf"
+    [textLayer]="true"
+    [showToolbar]="true"
+    [showRotateButton]="false"
+    [showPresentationModeButton]="false"
+    [showOpenFileButton]="false"
+    [showDownloadButton]="false"
+    [showSpreadButton]="false"
+    [showPrintButton]="false"
+    [showDrawEditor]="false"
+    [showBorders]="false"
+    (annotationEditorEvent)="onAnnotationEvent($event)"
+    [(page)]="currentPage"
+    class="h-full flex-1"
+  />
+
+  <section class="flex flex-col w-[30%] h-full justify-between">
+    <div class="bg-white rounded-xl flex flex-col max-h-[48%] w-full">
+      <div
+        class="bg-primary text-center text-white font-semibold p-2 rounded-t-xl"
+      >
+        <h3>Book Club</h3>
+      </div>
+      <div
+        class="flex gap-4 px-3 my-3 flex-col justify-between flex-1 overflow-y-scroll"
+      >
+        @for (item of [1, 2, 3, 4, 5]; track $index) {
+          <div>
+            <div class="bg-primary/20 p-2 rounded-xl">
+              <p>Notes on decision making</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl flex flex-col max-h-[48%] w-full">
+      <div
+        class="bg-primary text-center text-white font-semibold p-2 rounded-t-xl"
+      >
+        <h3>Notes and Highlights</h3>
+      </div>
+      <div class="flex gap-4 px-3 my-3 flex-col overflow-y-scroll">
+        @for (item of [1, 2, 3, 4, 5]; track $index) {
+          <div class="bg-primary/20 p-2 rounded-xl">
+            <p>Notes on decision making</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+</section>

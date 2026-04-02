@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -14,9 +14,9 @@ export class Svgs {
 
   safeSvg!: SafeHtml;
 
-  private sanitizer = inject(DomSanitizer);
+  constructor(private sanitizer: DomSanitizer) {}
 
-  ngOnInit() {
+  ngOnChanges() {
     this.safeSvg = this.sanitizer.bypassSecurityTrustHtml(this.svg());
   }
 }

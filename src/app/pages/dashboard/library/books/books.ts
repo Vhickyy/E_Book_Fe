@@ -13,7 +13,7 @@ import { Pagination } from '../../../../components/pagination/pagination';
   styleUrl: './books.css',
 })
 export class Books {
-  // books = [];
+  books = books;
   data = signal<any[]>([]);
   totalItems = signal(books.length);
 
