@@ -1,8 +1,9 @@
-<section class="layout h-screen">
-  <app-sidebar />
+<section class="grid md:grid-cols-[minmax(250px,_auto)_1fr] h-screen">
+  <app-sidebar [(isSidebarOpen)]="isSidebarOpen" />
   <div class="flex flex-col h-screen overflow-y-auto">
     <div class="sticky top-0 py-6 z-10 shadow-lg bg-white">
       <div class="w-[90%] mx-auto flex justify-between items-center">
+        <button class="md:hidden" (click)="isSidebarOpen = true">☰</button>
         <p class="text-primary font-semibold text-4xl font-[playball]">
           Hello Vee!
         </p>
