@@ -21,7 +21,6 @@ import { Svgs } from '../../components/svgs/svgs';
 })
 export class Nav {
   mobile = signal(false);
-
   scrolled = false;
   menusvg = MENU_SVGS;
   cartsvg = CART_SVG;

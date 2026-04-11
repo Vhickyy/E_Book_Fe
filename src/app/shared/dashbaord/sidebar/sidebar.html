@@ -1,5 +1,18 @@
-<div
+<!-- <div
   class="flex flex-col border-r border-[#EAECF0] h-screen top-0 bottom-0 gap-10 py-8 px-6 bg-primary/30"
+> -->
+<!-- overlay -->
+@if (isSidebarOpen()) {
+  <div
+    class="fixed inset-0 bg-black/40 z-40 md:hidden"
+    (click)="isSidebarOpen.set(false)"
+  ></div>
+}
+
+<div
+  class="fixed md:static top-0 left-0 bottom-0 h-screen w-72 md:w-auto z-50 flex flex-col border-r border-[#EAECF0] gap-10 py-8 px-6 bg-white md:bg-primary/30 transform transition-transform duration-300 md:translate-x-0"
+  [class.translate-x-0]="isSidebarOpen()"
+  [class.-translate-x-full]="!isSidebarOpen()"
 >
   <app-svgs [svg]="logosvg" svgclass="w-7 h-7 text-primary" />
   <div class="flex-1 gap-4 flex flex-col overflow-y-auto">

@@ -1,6 +1,6 @@
 <section class="grid gap-10">
-  <aside class="flex justify-between gap-4">
-    @for (item of [1, 2, 3]; track $index) {
+  <aside class="grid grid-cols-2 md:grid-cols-4 justify-between gap-4">
+    @for (item of [1, 2, 3, 4]; track $index) {
       <div class="bg-white shadow-md flex-1 p-6 rounded-xl">
         <div class="flex gap-4">
           <app-svgs
@@ -20,7 +20,7 @@
     <div class="p-6 rounded-xl h-full bg-white flex-1 grid place-items-center">
       <p class="text-primary text-2xl font-semibold">Graph</p>
     </div>
-    <div class="grid gap-4 w-[30%]">
+    <div class="hidden md:grid gap-4 w-[30%]">
       @for (item of [1, 2, 3]; track $index) {
         <div class="bg-white shadow-md p-6 rounded-xl">
           <div class="flex gap-4">

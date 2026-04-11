@@ -1,5 +1,4 @@
-import { Component, inject, model, output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, inject } from '@angular/core';
 import { RegisterService } from '../../register-service';
 
 @Component({

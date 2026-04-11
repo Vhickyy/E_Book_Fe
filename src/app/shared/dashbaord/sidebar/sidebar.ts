@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, model, signal } from '@angular/core';
 import { LOGO_SVG, MENU_SVGS } from '../../../../assets/svgs';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -14,6 +14,7 @@ export class Sidebar {
   router = inject(Router);
   logosvg = LOGO_SVG;
   menusvg = MENU_SVGS;
+  isSidebarOpen = model.required<boolean>();
   activeDropDown = signal('');
   sidebarData = [
     {

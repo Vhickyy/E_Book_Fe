@@ -18,7 +18,7 @@
       </div>
     } @else {
       <div class="flex-1 flex flex-col justify-between gap-4">
-        <div class="grid grid-cols-3 h flex-1 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-3 h-auto gap-4">
           @for (item of data(); track $index) {
             <app-book [book]="item" />
           }
@@ -33,7 +33,7 @@
       </div>
     }
 
-    <div class="w-[30%] flex flex-col gap-4">
+    <div class="w-[30%] flex-col gap-4 md:flex hidden">
       <div class="bg-white shadow-lg rounded-xl w-full h-full"></div>
       <div class="bg-white shadow-lg rounded-xl w-full h-full"></div>
     </div>
